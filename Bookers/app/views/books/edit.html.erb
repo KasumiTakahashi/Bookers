@@ -1,8 +1,22 @@
-<h1>編集画面</h1>
+<h1>Editing Book</h1>
+<form class="edit-form">
+
 <%= form_with model:@book, url:"/books/#{@book.id}", local:true do |f| %>
-  <h4>タイトル</h4>
+<div class="field">
+  <p>Title</p>
   <%= f.text_field :title %>
-  <h4>本文</h4>
+</div>
+<div class="field">
+  <p>Body</p>
   <%= f.text_area :body %>
-  <%= f.submit '保存' %>
+</div>
+<div class="actions">
+  <%= f.submit 'Update Book' %>
+</div>
+</form>
+<div class="show-link">
+  <span class="link"><%= link_to "Show", book_path(@book.id) %></span>
+  <p>&nbsp;|&nbsp;</p>
+  <span class="link"><%= link_to "Back", books_path %></span>
+</div>
 <% end %>
