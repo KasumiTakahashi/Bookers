@@ -16,7 +16,7 @@
         <td class="td2"><%= book.body %> </td>
         <td class="td3 link"><%= link_to "Show", book_path(book.id) %></td>
         <td class="td3 link"><%= link_to "Edit", edit_book_path(book.id) %></td>
-        <td class="td3 link"><%= link_to "Destroy", destroy_book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+        <td class="td3 link"><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,9 +26,9 @@
 
 
     <%= form_with model:@book, url:"/books", local:true do |f| %>
-  <%= render 'layouts/_error_messages', book: f.object %>
-
-
+  <% if @book.errors.any? %>
+   <p>error can't be blank </p>
+  <% end %>
 
   <p>Title</p>
   <div class="field">
